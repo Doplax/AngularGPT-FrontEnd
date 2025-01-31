@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-othography-page',
+  selector: 'app-orthography-page',
   imports: [],
-  templateUrl: './othographyPage.component.html',
+  templateUrl: './orthographyPage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OthographyPageComponent { }
+export default class OrthographyPageComponent { }
