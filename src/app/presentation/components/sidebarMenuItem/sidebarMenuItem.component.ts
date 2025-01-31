@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -19,14 +19,13 @@ import { RouterModule } from '@angular/router';
     </a>
   `,
 })
-export class SidebarMenuItemComponent {
+export class SidebarMenuItemComponent implements OnInit {
   @Input({ required: true }) icon!: string;
   @Input({ required: true }) title!: string;
   @Input({ required: true }) description!: string;
   @Input({ required: true }) path!: string;
 
-
-  constructor() {
-    console.log(this.icon, this.title, this.description, this.path);
+  ngOnInit() {
+    console.log(this.icon);
   }
 }

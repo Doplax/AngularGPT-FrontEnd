@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-chat-message',
+  selector: 'app-my-message',
   imports: [],
-  templateUrl: './chatMessage.component.html',
+  templateUrl: './myMessage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChatMessageComponent {
+export class MyMessageComponent {
+
   @Input({required: true}) text!: string;
- }
+}
