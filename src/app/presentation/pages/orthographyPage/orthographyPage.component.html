@@ -7,6 +7,13 @@
     </div>
   </div>
 
-  <app-text-messaage-box placeHolder="Escribe algo aquí"
-  (onMessage)="handleMessage($event)" />
+  <!--<app-text-messaage-box
+    placeHolder="Escribe algo aquí"
+    (onMessage)="handleMessage($event)"
+  />-->
+
+  <app-text-message-box-file
+    placeHolder="Escribe algo aquí"
+    (onMessage)="handleMessageWithFile($event)"
+  />
 </div>

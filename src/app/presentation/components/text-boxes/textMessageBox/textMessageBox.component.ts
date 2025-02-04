@@ -2,14 +2,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-text-messaage-box',
+  selector: 'app-text-message-box',
   imports: [
     ReactiveFormsModule
   ],
-  templateUrl: './textMessaageBox.component.html',
+  templateUrl: './textMessageBox.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TextMessaageBoxComponent {
+export class TextMessageBoxComponent {
 
   @Input()  placeHolder: string = '';
   @Input()  disableCorrections: boolean = false;
