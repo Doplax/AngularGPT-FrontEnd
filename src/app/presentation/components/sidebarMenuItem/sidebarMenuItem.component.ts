@@ -26,6 +26,5 @@ export class SidebarMenuItemComponent implements OnInit {
   @Input({ required: true }) path!: string;
 
   ngOnInit() {
-    console.log(this.icon);
   }
 }
