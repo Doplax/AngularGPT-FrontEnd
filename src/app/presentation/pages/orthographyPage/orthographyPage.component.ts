@@ -15,4 +15,10 @@ import { TypingLoaderComponent } from '@components/typingLoader/typingLoader.com
   templateUrl: './orthographyPage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class OrthographyPageComponent { }
+export default class OrthographyPageComponent {
+
+
+  handleMessage(prompt: string) {
+    console.log({ prompt });
+  }
+ }
