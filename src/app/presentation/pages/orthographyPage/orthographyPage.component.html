@@ -12,8 +12,15 @@
     (onMessage)="handleMessage($event)"
   />-->
 
-  <app-text-message-box-file
+  <!--<app-text-message-box-file
     placeHolder="Escribe algo aquí"
     (onMessage)="handleMessageWithFile($event)"
+  />-->
+
+  <app-text-message-box-select
+    placeHolder="Escribe algo aquí"
+    [options]="[{id: '1', text: '1'},{id: '2', text: '2'}]"
+    (onMessage)="handleMessageWithSelect($event)"
   />
+
 </div>
