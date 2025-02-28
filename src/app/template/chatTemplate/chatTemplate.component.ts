@@ -35,11 +35,4 @@ export class ChatTemplateComponent {
     console.log(prompt);
   }
 
-  //handleMessageWithFile({prompt , file}: ITextMessageEvent) {
-  //  console.log({ prompt ,file });
-  //}
-
-  //handleMessageWithSelect({ prompt, selectedOption }: ITextMessageBoxEvent) {
-  //  console.log({ prompt ,selectedOption });
-  //}
 }
