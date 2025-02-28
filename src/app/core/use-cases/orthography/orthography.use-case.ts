@@ -4,7 +4,7 @@ import { environment } from "environments/environment.development";
 export const orthographyUseCase = async (prompt: string) => {
   try {
 
-    const resp = await fetch(`${environment.backendApi}/orthography-cjeck`, {
+    const resp = await fetch(`${environment.backendApi}/orthography-check`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
