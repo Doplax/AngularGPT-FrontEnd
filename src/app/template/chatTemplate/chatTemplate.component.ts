@@ -4,41 +4,35 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ChatMessageComponent } from '@components/chat-bubbles/chatMessage/chatMessage.component';
 import { MyMessageComponent } from '@components/chat-bubbles/myMessage/myMessage.component';
 import { TextMessageBoxComponent } from '@components/text-boxes/textMessageBox/textMessageBox.component';
 import { ITextMessageEvent } from '@components/text-boxes/textMessageBoxFile/textMessageBoxFile.component';
+import { ITextMessageBoxEvent } from '@components/text-boxes/textMessageBoxSelect/textMessageBoxSelect.component';
 import { TypingLoaderComponent } from '@components/typingLoader/typingLoader.component';
 import { Message } from '@interfaces/message.interface';
 import { OpenAiService } from 'app/services/openai.service';
 
 @Component({
-  selector: 'app-orthography-page',
+  selector: 'app-chat-template',
   imports: [
+    ReactiveFormsModule,
     ChatMessageComponent,
     MyMessageComponent,
     TypingLoaderComponent,
     TextMessageBoxComponent,
   ],
-  templateUrl: './orthographyPage.component.html',
+  templateUrl: './chatTemplate.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class OrthographyPageComponent {
+export class ChatTemplateComponent {
   public messages = signal<Message[]>([]);
   public isLoading = signal<boolean>(false);
   public openAiService = inject(OpenAiService);
 
-  handleMessage(prompt: string): any {
-    this.isLoading.set(true);
-    this.messages.update((prev) => [...prev, { text: prompt, isGpt: false }]);
-
-    this.openAiService.checkOrtography(prompt).subscribe((response) => {
-      this.isLoading.set(false);
-        console.log({ response });
-        this.messages.update((prev) => [
-          ...prev,
-          { text: response.message, isGpt: true ,info: response},
-        ]);
-    });
+  handleMessage(prompt: string) {
+    console.log(prompt);
   }
+
 }

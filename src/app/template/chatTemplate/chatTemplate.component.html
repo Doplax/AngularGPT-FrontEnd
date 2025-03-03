@@ -1,8 +1,6 @@
 <div class="chat-container">
   <div class="chat-messages">
     <div class="grid gap-y-2">
-      <app-chat-message text="Escibe el texto que quieres que revise" />
-
       @for (message of messages(); track $index) { @if (message.isGpt) {
       <app-chat-message [text]="message.text" />
       } @else {
@@ -13,6 +11,7 @@
     </div>
   </div>
 
+  <!-- MessageBox -->
   <app-text-message-box
     placeHolder="Escribe algo aquí"
     (onMessage)="handleMessage($event)"
