@@ -12,7 +12,7 @@ import { ITextMessageEvent } from '@components/text-boxes/textMessageBoxFile/tex
 import { ITextMessageBoxEvent } from '@components/text-boxes/textMessageBoxSelect/textMessageBoxSelect.component';
 import { TypingLoaderComponent } from '@components/typingLoader/typingLoader.component';
 import { Message } from '@interfaces/message.interface';
-import { OpenAiService } from 'app/services/openai.service';
+import { OpenAiService } from 'app/presentation/services/openai.service';
 
 @Component({
   selector: 'app-chat-template',
@@ -34,5 +34,4 @@ export class ChatTemplateComponent {
   handleMessage(prompt: string) {
     console.log(prompt);
   }
-
 }

@@ -15,7 +15,6 @@ export const orthographyUseCase = async (prompt: string) => {
     if (!resp.ok) {
       throw new Error('Error en la petición');
     }
-
     const data = await resp.json() as OrthographyResponse;
 
     return {

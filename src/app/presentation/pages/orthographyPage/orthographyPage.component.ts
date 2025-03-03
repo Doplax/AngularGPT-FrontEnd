@@ -4,13 +4,16 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { ChatMessageComponent } from '@components/chat-bubbles/chatMessage/chatMessage.component';
-import { MyMessageComponent } from '@components/chat-bubbles/myMessage/myMessage.component';
-import { TextMessageBoxComponent } from '@components/text-boxes/textMessageBox/textMessageBox.component';
+import {
+  ChatMessageComponent,
+  MyMessageComponent,
+  TextMessageBoxComponent,
+  TypingLoaderComponent
+} from '@components/index';
 import { ITextMessageEvent } from '@components/text-boxes/textMessageBoxFile/textMessageBoxFile.component';
-import { TypingLoaderComponent } from '@components/typingLoader/typingLoader.component';
 import { Message } from '@interfaces/message.interface';
-import { OpenAiService } from 'app/services/openai.service';
+import { OpenAiService } from 'app/presentation/services/openai.service';
+import { GptMessageOrthographyComponent } from "../../components/chat-bubbles/gptMessageOrthography/gptMessageOrthography.component";
 
 @Component({
   selector: 'app-orthography-page',
@@ -19,7 +22,9 @@ import { OpenAiService } from 'app/services/openai.service';
     MyMessageComponent,
     TypingLoaderComponent,
     TextMessageBoxComponent,
-  ],
+    ChatMessageComponent,
+    GptMessageOrthographyComponent
+],
   templateUrl: './orthographyPage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -34,11 +39,10 @@ export default class OrthographyPageComponent {
 
     this.openAiService.checkOrtography(prompt).subscribe((response) => {
       this.isLoading.set(false);
-        console.log({ response });
-        this.messages.update((prev) => [
-          ...prev,
-          { text: response.message, isGpt: true ,info: response},
-        ]);
+      this.messages.update((prev) => [
+        ...prev,
+        { text: response.message, isGpt: true, info: response },
+      ]);
     });
   }
 }
