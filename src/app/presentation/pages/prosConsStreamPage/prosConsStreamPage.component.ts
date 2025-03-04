@@ -19,16 +19,40 @@ export default class ProsConsStreamPageComponent {
   public isLoading = signal<boolean>(false);
   public openAiService = inject(OpenAiService);
 
+  public abortSignal = new AbortController();
+
   async handleMessage(prompt: string) {
+
+    this.abortSignal.abort(); // Se aborta la señal anterior
+    this.abortSignal = new AbortController(); // Se crea una nueva señal
+
+    this.messages.update((prev) => [
+      ...prev,
+      {
+        isGpt: false,
+        text: prompt,
+      },
+      {
+        isGpt: true,
+        text: '...',
+      },
+
+    ]);
 
     this.isLoading.set(true);
 
-    const stream = this.openAiService.prosConsStreamDicusser(prompt);
+    const stream = this.openAiService.prosConsStreamDicusser(prompt, this.abortSignal.signal);
 
     this.isLoading.set(false);
 
     for await (const text of stream) {
-      console.log(text);
+      this.handleStreamResponse(text);
     }
+  }
+
+  handleStreamResponse(response: string) {
+    this.messages().pop()
+    const messages = this.messages();
+    this.messages.set([...messages, { isGpt: true, text: response }]);
   }
  }

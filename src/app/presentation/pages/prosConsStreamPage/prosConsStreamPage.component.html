@@ -3,7 +3,7 @@
     <div class="grid gap-y-2">
       <app-chat-message text="Que deseas comparar? - Stream" />
 
-      @for (message of messages(); track $index) {
+      @for (message of messages(); track message.text) {
         @if (message.isGpt) {
           <app-chat-message [text]="message.text" />
         } @else {
@@ -21,3 +21,4 @@
     (onMessage)="handleMessage($event)"
   />
 </div>
+<!-- TODO Buscar referencia HTML para hacer scroll hacia abajo -->

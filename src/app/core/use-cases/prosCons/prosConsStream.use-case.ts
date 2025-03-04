@@ -1,7 +1,7 @@
 import type { OrthographyResponse } from "@interfaces/orthography.response";
 import { environment } from "environments/environment.development";
 
-export async function* prosConsStreamUseCase(prompt: string) {
+export async function* prosConsStreamUseCase(prompt: string, abortSignal:AbortSignal ) {
   try {
     const resp = await fetch(`${environment.backendApi}/pros-cons-discusser-stream`, {
       method: 'POST',
@@ -9,6 +9,7 @@ export async function* prosConsStreamUseCase(prompt: string) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({prompt}),
+      signal: abortSignal
     });
 
     if (!resp.ok) {
