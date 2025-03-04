@@ -1,4 +1,4 @@
 export interface ProsConsResponse {
-  role: string;
+  role:    string;
   content: string;
 }

@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ITextMessageEvent } from '../textMessageBoxFile/textMessageBoxFile.component';
 
-interface IOption {
+interface Option {
   id: string;
   text:string;
 }
 
-export interface ITextMessageBoxEvent {
+export interface TextMessageBoxEvent {
   prompt: string;
   selectedOption: string
 }
@@ -22,8 +22,8 @@ export class TextMessageBoxSelectComponent {
 
       @Input()  placeHolder: string = '';
       @Input()  disableCorrections: boolean = false;
-      @Input({required: true})  options!: IOption[];
-      @Output() onMessage = new EventEmitter<ITextMessageBoxEvent>();
+      @Input({required: true})  options!: Option[];
+      @Output() onMessage = new EventEmitter<TextMessageBoxEvent>();
 
       public fb = inject(FormBuilder);
 
