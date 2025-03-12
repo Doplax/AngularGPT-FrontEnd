@@ -8,9 +8,9 @@ import {
   ChatMessageComponent,
   MyMessageComponent,
   TextMessageBoxComponent,
-  TypingLoaderComponent
+  TypingLoaderComponent,
+  TextMessageEvent
 } from '@components/index';
-import { ITextMessageEvent } from '@components/text-boxes/textMessageBoxFile/textMessageBoxFile.component';
 import { Message } from '@interfaces/message.interface';
 import { OpenAiService } from 'app/presentation/services/openai.service';
 import { GptMessageOrthographyComponent } from "../../components/chat-bubbles/gptMessageOrthography/gptMessageOrthography.component";

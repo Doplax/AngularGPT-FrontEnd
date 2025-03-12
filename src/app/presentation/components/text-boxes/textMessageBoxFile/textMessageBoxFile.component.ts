@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-export interface ITextMessageEvent {
+export interface TextMessageEvent {
   prompt?: string | null;
   file: File;
 }
@@ -16,7 +16,7 @@ export interface ITextMessageEvent {
 export class TextMessageBoxFileComponent {
     @Input()  placeHolder: string = '';
     @Input()  disableCorrections: boolean = false;
-    @Output() onMessage = new EventEmitter<ITextMessageEvent>();
+    @Output() onMessage = new EventEmitter<TextMessageEvent>();
 
     public fb = inject(FormBuilder);
 

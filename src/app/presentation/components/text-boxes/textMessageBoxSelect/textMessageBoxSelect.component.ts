@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ITextMessageEvent } from '../textMessageBoxFile/textMessageBoxFile.component';
+import { TextMessageEvent } from '../textMessageBoxFile/textMessageBoxFile.component';
 
 interface Option {
   id: string;
