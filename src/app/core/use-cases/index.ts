@@ -4,3 +4,5 @@ export * from './orthography/orthography.use-case';
 export * from './prosCons/prosCons.use-case';
 export * from './prosCons/prosConsStream.use-case';
 export * from './translate/translate-text.use-case';
+export * from './image-generation/image-generation.use-case';
+
