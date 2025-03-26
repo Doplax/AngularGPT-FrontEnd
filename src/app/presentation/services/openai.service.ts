@@ -5,6 +5,7 @@ import {
   prosConsStreamUseCase,
   translateTextUseCase,
   textToAudioUseCase,
+  imageGenerationUseCase,
 } from '@use-cases/index';
 import { from } from 'rxjs';
 import { audioToTextUseCase } from '../../core/use-cases/audios/audio-to-text.use-case';
@@ -32,5 +33,9 @@ export class OpenAiService {
   }
   audioToText(file: File, prompt?: string) {
     return from(audioToTextUseCase(file, prompt));
+  }
+
+  imageGeneration(prompt: string, originalImage?: string, maskImage?: string) {
+    return from(imageGenerationUseCase(prompt, originalImage, maskImage));
   }
 }
