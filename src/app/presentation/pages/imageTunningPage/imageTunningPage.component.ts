@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ChatMessageComponent, MyMessageComponent, TypingLoaderComponent, TextMessageBoxComponent } from '@components/index';
+import { ChatMessageComponent, MyMessageComponent, TypingLoaderComponent, TextMessageBoxComponent, GptMessageEditableImageComponent } from '@components/index';
 import { Message } from '@interfaces/message.interface';
 import { OpenAiService } from 'app/presentation/services/openai.service';
 
@@ -12,13 +12,21 @@ import { OpenAiService } from 'app/presentation/services/openai.service';
     MyMessageComponent,
     TypingLoaderComponent,
     TextMessageBoxComponent,
+    GptMessageEditableImageComponent
   ],
   templateUrl: './imageTunningPage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ImageTunningPageComponent {
 
-  public messages = signal<Message[]>([]);
+  public messages = signal<Message[]>([{
+    isGpt: true,
+    text: 'This is the original image',
+    imageInfo: {
+      alt: 'This is the original image',
+      url: 'http://localhost:3000/gpt/image-generation/1743173092666.png'
+    }
+  }]);
   public isLoading = signal<boolean>(false);
   public openAiService = inject(OpenAiService);
 
@@ -43,9 +51,15 @@ export default class ImageTunningPageComponent {
     })
   }
 
+  handleImageChange(newImage: string, originalImage: string) {
+    this.originalImage.set(originalImage);
+    //todo: mask
+
+    console.log({newImage, originalImage})
+  }
 
   generateVariation() {
-    
+
   }
 
 }
