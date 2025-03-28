@@ -13,7 +13,7 @@ export const imageGenerationUseCase = async (
   maskImage?: string,
 ) => {
   try {
-    const resp = await fetch(`${environment.backendApi}`, {
+    const resp = await fetch(`${environment.backendApi}/image-generation`, {
       method: 'POST',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({
