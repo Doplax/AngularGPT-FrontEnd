@@ -19,7 +19,8 @@ import { OpenAiService } from 'app/presentation/services/openai.service';
     MyMessageComponent,
     TypingLoaderComponent,
     TextMessageBoxComponent,
-  ],  templateUrl: './imageGenerationPage.component.html',
+  ],
+  templateUrl: './imageGenerationPage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ImageGenerationPageComponent {
