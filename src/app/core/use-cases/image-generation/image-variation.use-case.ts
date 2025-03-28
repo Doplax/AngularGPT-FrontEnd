@@ -13,7 +13,7 @@ export const imageVariationUseCase = async (originalImage: string) => {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
-        originalImage,
+        baseImage: originalImage,
       }),
     });
 
