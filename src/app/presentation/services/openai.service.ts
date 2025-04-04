@@ -8,8 +8,10 @@ import {
   imageGenerationUseCase,
   imageVariationUseCase,
 } from '@use-cases/index';
-import { from } from 'rxjs';
+import { from, Observable, of, tap } from 'rxjs';
 import { audioToTextUseCase } from '../../core/use-cases/audios/audio-to-text.use-case';
+import { createThreadUseCase } from '@use-cases/assistant/create-thread.use-case';
+import { postQuestionUseCase } from '@use-cases/assistant/post-question.use-case';
 
 @Injectable({ providedIn: 'root' })
 export class OpenAiService {
@@ -42,5 +44,22 @@ export class OpenAiService {
 
   imageVariation(originalImage: string) {
     return from(imageVariationUseCase(originalImage));
+  }
+
+
+  createThread(): Observable<string> {
+    if (localStorage.getItem('threadId')) {
+      return of(localStorage.getItem('threadId')!);
+    }
+
+    return from( createThreadUseCase() ).pipe(
+      tap( (thread) => {
+        localStorage.setItem('threadId',thread)
+      })
+    )
+  }
+
+  postQuestion(question: string, threadId: string){
+    return from( postQuestionUseCase(question, threadId))
   }
 }
