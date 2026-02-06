@@ -1,28 +1,57 @@
-<div class="col-srart-1 col-end-9 p-3 rounded-lg">
-  <div class="flex flex-row items-start">
-    <div
-      class="flex items-center justify-center h-10 w-10 rounded-full bg-green-600 flex-shrink-0"
-    >
-      G
+<div class="group w-full text-gray-100 border-b border-gray-800/50">
+  <div class="flex gap-4 p-6 max-w-4xl mx-auto">
+    <!-- Avatar -->
+    <div class="flex-shrink-0">
+      <div class="w-8 h-8 rounded-sm bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center">
+        <i class="fa-solid fa-robot text-sm text-white"></i>
+      </div>
     </div>
 
-    <div
-      class="relative ml-3 text-sm bg-black bg-opacity-25 pt-3 pb-2 px-4 shadow rounded-xl"
-    >
-      <h3>Puntaje: {{ userScore }}</h3>
-      <p>{{ text }}</p>
+    <!-- Message Content -->
+    <div class="flex-1 overflow-hidden">
+      <div class="text-base leading-7">
+        <div class="mb-4 p-4 bg-gradient-to-r from-indigo-500/20 to-purple-600/20 border border-indigo-500/30 rounded-lg">
+          <h3 class="text-lg font-semibold mb-2 text-indigo-300">
+            <i class="fa-solid fa-star mr-2"></i>Puntaje: {{ userScore }}%
+          </h3>
+          <p class="text-gray-200">{{ text }}</p>
+        </div>
 
-      @if(errors.length > 0){
-        <h3 class="text-2xl">Errores encontrados</h3>
-      }
-
-      <ul>
-        @for(error of errors; track $index; let first = $first){
-          <li> {{ error }} </li>
-        } @empty {
-          <li>No se encontraron errores</li>
+        @if(errors.length > 0){
+          <div class="mt-4">
+            <h3 class="text-lg font-semibold mb-3 text-red-400">
+              <i class="fa-solid fa-circle-exclamation mr-2"></i>Errores encontrados
+            </h3>
+            <ul class="space-y-2">
+              @for(error of errors; track $index){
+                <li class="flex items-start gap-2 text-gray-300 bg-red-500/10 p-3 rounded-lg border border-red-500/20">
+                  <i class="fa-solid fa-xmark text-red-400 mt-1"></i>
+                  <span>{{ error }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        } @else {
+          <div class="mt-4 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+            <p class="text-green-400">
+              <i class="fa-solid fa-circle-check mr-2"></i>No se encontraron errores
+            </p>
+          </div>
         }
-      </ul>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="flex gap-2 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
+        <button class="p-1 rounded hover:bg-gray-700 transition-colors" title="Copiar">
+          <i class="fa-regular fa-copy text-gray-400 text-sm"></i>
+        </button>
+        <button class="p-1 rounded hover:bg-gray-700 transition-colors" title="Me gusta">
+          <i class="fa-regular fa-thumbs-up text-gray-400 text-sm"></i>
+        </button>
+        <button class="p-1 rounded hover:bg-gray-700 transition-colors" title="No me gusta">
+          <i class="fa-regular fa-thumbs-down text-gray-400 text-sm"></i>
+        </button>
+      </div>
     </div>
   </div>
 </div>

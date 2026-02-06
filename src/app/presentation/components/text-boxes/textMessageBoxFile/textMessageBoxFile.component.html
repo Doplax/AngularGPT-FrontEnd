@@ -1,35 +1,52 @@
 <form
   [formGroup]="form"
   (ngSubmit)="handleSubmit()"
-  class="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4"
+  class="relative flex items-center w-full max-w-4xl mx-auto"
 >
-  <div class="mr-3">
-    <button
-      (click)="fileInput.click()"
-      class="flex items-center justify-center text-gray-400"
-    >
-      <i class="fa-solid fa-paperclip text-xl"></i>
-    </button>
+  <div class="relative w-full bg-[#2f2f2f] rounded-3xl shadow-xl border border-gray-700 hover:border-gray-600 transition-all duration-200 focus-within:border-gray-500">
+    <div class="flex items-center gap-3 px-5 py-4">
+      <!-- File Attachment Button -->
+      <button
+        type="button"
+        (click)="fileInput.click()"
+        class="flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-lg hover:bg-gray-700 transition-all"
+        title="Adjuntar archivo"
+      >
+        <i class="fa-solid fa-paperclip text-gray-400 text-lg"></i>
+      </button>
 
-    <input type="file" #fileInput hidden (change)="handleSelectedFile($event)"/>
-  </div>
+      <input type="file" #fileInput hidden (change)="handleSelectedFile($event)" accept="audio/*"/>
 
-  <div class="flex-grow">
-    <div class="relative w-full">
+      <!-- Text Input -->
       <input
         type="text"
-        autofocus
-        class="flex w-full border rounded-xl text-gray-800 foucs:outline-none focus:border-indigo-300 pl-4 h-10"
+        class="flex-1 bg-transparent text-white placeholder-gray-400 focus:outline-none text-base"
         [placeholder]="placeHolder"
         formControlName="prompt"
       />
-    </div>
-  </div>
 
-  <div class="ml-4">
-    <button class="btn-primary" type="submit" [disabled]="form.invalid">
-      <span class="mr-2">Enviar</span>
-      <i class="fa-regular fa-paper-plane"></i>
-    </button>
+      <!-- Submit Button -->
+      <button
+        class="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200"
+        [ngClass]="form.invalid ? 'bg-gray-600 cursor-not-allowed' : 'bg-white hover:bg-gray-200'"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        <i
+          class="fa-solid fa-arrow-up text-base"
+          [ngClass]="form.invalid ? 'text-gray-400' : 'text-black'"
+        ></i>
+      </button>
+    </div>
+
+    <!-- File name display -->
+    @if(file) {
+      <div class="px-5 pb-3 pt-0">
+        <div class="flex items-center gap-2 text-sm text-gray-400 bg-gray-800 rounded-lg px-3 py-2">
+          <i class="fa-solid fa-file-audio"></i>
+          <span>{{ file.name }}</span>
+        </div>
+      </div>
+    }
   </div>
 </form>

@@ -1,11 +1,22 @@
-<div class="col-srart-6 col-end-12 p-3 rounded-lg">
-  <div class="flex flex-row-reverse items-start">
-    <div class="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
-      U
+<div class="group w-full text-gray-100 bg-[#2f2f2f] border-b border-gray-800/50">
+  <div class="flex gap-4 p-6 max-w-4xl mx-auto">
+    <!-- Avatar -->
+    <div class="flex-shrink-0">
+      <div class="w-8 h-8 rounded-sm bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+        <span class="text-sm font-semibold">U</span>
+      </div>
     </div>
 
-    <div class="relative mr-3 text-sm bg-black bg-opacity-25 pt-3 pb-2 px-4 shadow rounded-xl">
-      <div>{{ text }}</div>
+    <!-- Message Content -->
+    <div class="flex-1 overflow-hidden">
+      <div class="text-base leading-7 whitespace-pre-wrap">{{ text }}</div>
+
+      <!-- Edit button (like ChatGPT) -->
+      <div class="flex gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <button class="p-1 rounded hover:bg-gray-700 transition-colors" title="Editar">
+          <i class="fa-regular fa-pen-to-square text-gray-400 text-sm"></i>
+        </button>
+      </div>
     </div>
   </div>
 </div>

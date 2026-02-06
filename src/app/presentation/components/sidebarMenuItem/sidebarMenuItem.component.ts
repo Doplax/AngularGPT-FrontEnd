@@ -8,13 +8,15 @@ import { RouterModule } from '@angular/router';
   template: `
     <a
       [routerLink]="path"
-      routerLinkActive="bg-gray-800"
-      class="flex justify-center items-center hover:bg-gray-800 rounded-md p-2 transition-colors cursor-pointer"
+      routerLinkActive="bg-white/10"
+      class="flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 transition-all duration-200 cursor-pointer group"
     >
-      <i class="{{ icon }} text-2xl mr-4 text-indigo-400"></i>
-      <div class="flex flex-col flex-grow">
-        <span class="text-white text-lg font-semibold">{{ title }}</span>
-        <span class="text-gray-400 text-sm">{{ description }}</span>
+      <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-600/20 flex items-center justify-center mt-0.5">
+        <i class="{{ icon }} text-lg text-indigo-400 group-hover:text-indigo-300 transition-colors"></i>
+      </div>
+      <div class="flex flex-col flex-grow min-w-0">
+        <span class="text-white text-sm font-medium">{{ title }}</span>
+        <span class="text-gray-500 text-xs truncate">{{ description }}</span>
       </div>
     </a>
   `,

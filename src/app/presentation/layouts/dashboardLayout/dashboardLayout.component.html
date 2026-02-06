@@ -1,37 +1,64 @@
-<main class="flex flex-row mt-7">
+<main class="flex flex-row h-screen bg-[#0f0f0f]">
+  <!-- Sidebar -->
   <nav
-    class="hidden sm:flex flex-col ml-5 w-[370px] min-h-[calc(100vh-3.0rem)] bg-white/10 p-5 rounded-3xl"
+    class="hidden sm:flex flex-col w-[260px] bg-[#171717] border-r border-gray-800"
   >
-    <h1
-      class="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 bg-clip-text text-transparent"
-    >
-      AngularGPT<span class="text-indigo-500">.</span>
-    </h1>
-    <span class="text-xl">Bienvenido</span>
+    <!-- Header con logo y nuevo chat -->
+    <div class="p-3">
+      <button class="flex items-center justify-between w-full px-3 py-2.5 rounded-lg hover:bg-white/5 transition-all duration-200 group">
+        <div class="flex items-center gap-3">
+          <div class="w-7 h-7 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center">
+            <i class="fa-solid fa-robot text-sm"></i>
+          </div>
+          <span class="font-semibold text-base">AngularGPT</span>
+        </div>
+        <i class="fa-solid fa-pen-to-square text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+      </button>
+    </div>
 
-    <div class="border-gray-700 border my-3"></div>
+    <div class="border-t border-gray-800 my-2"></div>
 
     <!-- Nav Links -->
-    @for (route of routes; track route.path){
-    <app-sidebar-menu-item
-      [description]="route.data!['description']"
-      [title]="route.data!['title']"
-      [icon]="route.data!['icon']"
-      [path]="route.path!"
-    />
+    <div class="flex-1 overflow-y-auto px-3 py-2 space-y-1">
+      @for (route of routes; track route.path){
+      <app-sidebar-menu-item
+        [description]="route.data!['description']"
+        [title]="route.data!['title']"
+        [icon]="route.data!['icon']"
+        [path]="route.path!"
+      />
+      }
+    </div>
 
-    }
-
-    <!-- End Nav Links -->
+    <!-- Bottom section -->
+    <div class="p-3 border-t border-gray-800">
+      <div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 transition-all cursor-pointer">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+          <span class="text-sm font-semibold">U</span>
+        </div>
+        <span class="text-sm text-gray-300">Usuario</span>
+      </div>
+    </div>
   </nav>
 
-  <section
-    class="mx-3 sm:mx-20 flex flex-col w-full h-[calc(100vh-50px)] bg-white/10 p-5 rounded-3xl"
-  >
-    <div class="flex h-full flex-row">
-      <div class="flex flex-col flex-auto p-1">
-        <router-outlet />
+  <!-- Main Content Area -->
+  <section class="flex-1 flex flex-col overflow-hidden">
+    <!-- Top bar (optional) -->
+    <div class="h-12 border-b border-gray-800 flex items-center justify-between px-4 bg-[#171717]">
+      <div class="flex items-center gap-2">
+        <button class="sm:hidden p-2 hover:bg-white/5 rounded-lg transition-all">
+          <i class="fa-solid fa-bars text-gray-400"></i>
+        </button>
       </div>
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-gray-400">GPT-4</span>
+        <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+      </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="flex-1 overflow-hidden">
+      <router-outlet />
     </div>
   </section>
 </main>
