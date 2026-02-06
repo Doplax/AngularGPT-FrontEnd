@@ -1,30 +1,20 @@
 .typing {
-  display: block;
-  width: 60px;
-  height: 40px;
-  border-radius: 20px;
-  margin: 0 1rem;
   display: flex;
-  justify-content: center;
+  gap: 4px;
   align-items: center;
-  background-color: #f2f2f2;
+  padding: 8px 0;
 }
 
 .circle {
   display: block;
-  height: 10px;
-  width: 10px;
+  height: 8px;
+  width: 8px;
   border-radius: 50%;
-  background-color: #8d8d8d;
-  margin: 3px;
+  background-color: #6b7280;
 }
+
 .circle.scaling {
-  animation: typing 1000ms ease-in-out infinite;
-  animation-delay: 3600ms;
-}
-.circle.bouncing {
-  animation: bounce 1000ms ease-in-out infinite;
-  animation-delay: 3600ms;
+  animation: typing 1.4s ease-in-out infinite;
 }
 
 .circle:nth-child(1) {
@@ -32,39 +22,25 @@
 }
 
 .circle:nth-child(2) {
-  animation-delay: 333ms;
+  animation-delay: 200ms;
 }
 
 .circle:nth-child(3) {
-  animation-delay: 666ms;
+  animation-delay: 400ms;
 }
 
 @keyframes typing {
   0% {
     transform: scale(1);
+    opacity: 0.6;
   }
-  33% {
+  20% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+  40% {
     transform: scale(1);
-  }
-  50% {
-    transform: scale(1.4);
-  }
-  100% {
-    transform: scale(1);
+    opacity: 0.6;
   }
 }
 
-@keyframes bounce {
-  0% {
-    transform: translateY(0);
-  }
-  33% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}

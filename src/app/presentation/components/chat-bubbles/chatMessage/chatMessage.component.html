@@ -1,20 +1,27 @@
-<div class="col-srart-1 col-end-9 p-3 rounded-lg">
-  <div class="flex flex-row items-start">
-    <div class="flex items-center justify-center h-10 w-10 rounded-full bg-green-600 flex-shrink-0">
-      G
+<div class="group w-full text-gray-100 border-b border-gray-800/50">
+  <div class="flex gap-4 p-6 max-w-4xl mx-auto">
+    <!-- Avatar -->
+    <div class="flex-shrink-0">
+      <div class="w-8 h-8 rounded-sm bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center">
+        <i class="fa-solid fa-robot text-sm text-white"></i>
+      </div>
     </div>
 
-    <div class="relative ml-3 text-sm bg-black bg-opacity-25 pt-3 pb-2 px-4 shadow rounded-xl">
-      <markdown>
-        <div>{{ text }}</div>
-      </markdown>
+    <!-- Message Content -->
+    <div class="flex-1 overflow-hidden">
+      <div class="text-base leading-7">
+        <markdown class="prose prose-invert max-w-none">
+          <div>{{ text }}</div>
+        </markdown>
+      </div>
+
       @if(audioUrl){
         <audio
           autoplay
           controls
           [src]="audioUrl"
-          class="w-full"
-          >
+          class="w-full mt-4 rounded-lg"
+        >
         </audio>
       }
 
@@ -22,9 +29,22 @@
         <img
           [src]="imageInfo.url"
           [alt]="imageInfo.alt"
-          class="rounded-xl w-96 h-96 object-cover"
+          class="mt-4 rounded-xl max-w-md object-cover shadow-lg"
         />
       }
+
+      <!-- Action buttons (like ChatGPT) -->
+      <div class="flex gap-2 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
+        <button class="p-1 rounded hover:bg-gray-700 transition-colors" title="Copiar">
+          <i class="fa-regular fa-copy text-gray-400 text-sm"></i>
+        </button>
+        <button class="p-1 rounded hover:bg-gray-700 transition-colors" title="Me gusta">
+          <i class="fa-regular fa-thumbs-up text-gray-400 text-sm"></i>
+        </button>
+        <button class="p-1 rounded hover:bg-gray-700 transition-colors" title="No me gusta">
+          <i class="fa-regular fa-thumbs-down text-gray-400 text-sm"></i>
+        </button>
+      </div>
     </div>
   </div>
 </div>
