@@ -1,4 +1,4 @@
 export const environment = {
-  backendApi: 'http://localhost:3000/gpt',
-  assistantApi: 'http://localhost:3000/sam-assistant',
+  backendApi: 'https://nest-gpt-back-end-git-main-doplaxs-projects.vercel.app/gpt',
+  assistantApi: 'https://nest-gpt-back-end-git-main-doplaxs-projects.vercel.app/sam-assistant',
 };
