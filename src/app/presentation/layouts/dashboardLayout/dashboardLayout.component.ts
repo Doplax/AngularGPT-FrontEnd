@@ -10,6 +10,7 @@ import { routes } from '../../../app.routes';
     SidebarMenuItemComponent
   ],
   templateUrl: './dashboardLayout.component.html',
+  styleUrl: './dashboardLayout.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush, //to work with signals
 })
 export class DashboardLayoutComponent {
