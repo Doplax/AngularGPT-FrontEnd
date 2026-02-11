@@ -1,0 +1,28 @@
+.app-background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.app-background__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(115%) contrast(110%) brightness(0.65);
+}
+
+.app-background__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 55%),
+    linear-gradient(135deg, rgba(5, 8, 15, 0.75), rgba(20, 25, 40, 0.35));
+  backdrop-filter: blur(2px);
+}
+
+.app-content {
+  position: relative;
+  z-index: 0;
+  height: 100%;
+}

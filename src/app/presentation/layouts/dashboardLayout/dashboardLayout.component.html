@@ -1,7 +1,23 @@
-<main class="flex flex-row h-screen bg-[#0f0f0f]">
+<div class="app-background">
+  <video
+    class="app-background__video"
+    autoplay
+    [muted]="true"
+    loop
+    playsinline
+  >
+    <source
+      src="videos/background-video.webm"
+      type="video/webm"
+    />
+  </video>
+  <div class="app-background__overlay"></div>
+</div>
+
+<main class="flex flex-row h-screen app-content">
   <!-- Sidebar -->
   <nav
-    class="hidden sm:flex flex-col w-[260px] bg-[#171717] border-r border-gray-800"
+    class="hidden sm:flex flex-col w-[260px] glass-surface border-r border-white/10"
   >
     <!-- Header con logo y nuevo chat -->
     <div class="p-3">
@@ -16,7 +32,7 @@
       </button>
     </div>
 
-    <div class="border-t border-gray-800 my-2"></div>
+    <div class="border-t border-white/10 my-2"></div>
 
     <!-- Nav Links -->
     <div class="flex-1 overflow-y-auto px-3 py-2 space-y-1">
@@ -31,7 +47,7 @@
     </div>
 
     <!-- Bottom section -->
-    <div class="p-3 border-t border-gray-800">
+    <div class="p-3 border-t border-white/10">
       <div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 transition-all cursor-pointer">
         <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
           <span class="text-sm font-semibold">U</span>
@@ -42,9 +58,9 @@
   </nav>
 
   <!-- Main Content Area -->
-  <section class="flex-1 flex flex-col overflow-hidden">
+  <section class="flex-1 flex flex-col overflow-hidden glass-surface">
     <!-- Top bar (optional) -->
-    <div class="h-12 border-b border-gray-800 flex items-center justify-between px-4 bg-[#171717]">
+    <div class="h-12 border-b border-white/10 flex items-center justify-between glass-surface-light">
       <div class="flex items-center gap-2">
         <button class="sm:hidden p-2 hover:bg-white/5 rounded-lg transition-all">
           <i class="fa-solid fa-bars text-gray-400"></i>

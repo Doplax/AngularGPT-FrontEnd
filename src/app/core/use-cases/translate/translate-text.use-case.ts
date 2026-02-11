@@ -1,5 +1,5 @@
 import type { TranslateResponse } from "@interfaces/index";
-import { environment } from "environments/environment.development";
+import { environment } from "environments/environment";
 
 export const translateTextUseCase = async (prompt: string, lang: string) => {
   try {
